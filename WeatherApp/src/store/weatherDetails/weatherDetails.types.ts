@@ -1,6 +1,6 @@
 export interface IGetWeatherDetails {
-  latitude: number;
-  longitude: number;
+  latitude: number | null;
+  longitude: number | null;
 }
 
 export interface IWeatherDetailsState {
