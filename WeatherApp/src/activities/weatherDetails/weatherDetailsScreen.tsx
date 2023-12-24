@@ -18,9 +18,12 @@ import {IMAGE_BASE_URL} from '../../constants/apiConstants';
 
 const WeatherDetailsScreen = () => {
   const dispatch = useAppDispatch();
+
   const weatherData = useAppSelector(
     state => state.weatherDetailsReducer?.weatherDetails,
   );
+
+  const isError = useAppSelector(state => state.weatherDetailsReducer?.error);
 
   const apiLoading = useAppSelector(
     state => state.weatherDetailsReducer?.loading,
@@ -59,6 +62,14 @@ const WeatherDetailsScreen = () => {
         apiLoading={apiLoading}
       />
     );
+
+  if (isError) {
+    return (
+      <SafeAreaView>
+        <Text>Something went wrong</Text>
+      </SafeAreaView>
+    );
+  }
   return (
     <SafeAreaView>
       <ImageBackground
@@ -68,7 +79,7 @@ const WeatherDetailsScreen = () => {
         <Image
           style={styles.weatherIcon}
           source={{
-            uri: `${IMAGE_BASE_URL}${weatherData?.weather[0].icon}@4x.png`,
+            uri: `${IMAGE_BASE_URL}/${weatherData?.weather[0].icon}@4x.png`,
           }}
         />
         <View>

@@ -16,8 +16,15 @@ export function* processingWeatherDetails(data: IWeatheDetailsAction) {
         type: weatherDetailsConstants.GET_WEATHER_DETAILS_SUCCESS,
         payload: res.data,
       });
+    } else {
+      yield put({
+        type: weatherDetailsConstants.GET_WEATHER_DETAILS_FAILURE,
+      });
     }
   } catch (error) {
+    yield put({
+      type: weatherDetailsConstants.GET_WEATHER_DETAILS_FAILURE,
+    });
     console.log('error', error);
   }
 }

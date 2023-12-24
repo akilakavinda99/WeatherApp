@@ -33,7 +33,7 @@ export function weatherDetailsReducer(
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: true,
       };
     default:
       return state;
