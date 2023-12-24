@@ -19,7 +19,6 @@ export const fetchCoordinates = () => {
         store.dispatch(setGeoLocationLoaderAction());
         Geolocation.getCurrentPosition(
           position => {
-            console.log('position====', position);
             if (position.coords.latitude && position.coords.longitude) {
               resolve({
                 latitude: position.coords.latitude,
@@ -54,7 +53,6 @@ export const fetchCoordinates = () => {
         );
       }
     } catch (error) {
-      console.error('Error getting coordinates:', error);
       reject(error);
     }
   });

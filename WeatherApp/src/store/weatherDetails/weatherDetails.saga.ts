@@ -11,7 +11,6 @@ export function* processingWeatherDetails(data: IWeatheDetailsAction) {
     );
 
     if (res.status == 200) {
-      console.log('res', res.data);
       yield put({
         type: weatherDetailsConstants.GET_WEATHER_DETAILS_SUCCESS,
         payload: res.data,
@@ -25,7 +24,6 @@ export function* processingWeatherDetails(data: IWeatheDetailsAction) {
     yield put({
       type: weatherDetailsConstants.GET_WEATHER_DETAILS_FAILURE,
     });
-    console.log('error', error);
   }
 }
 

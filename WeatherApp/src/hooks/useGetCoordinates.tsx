@@ -15,7 +15,7 @@ const useGetCoordinates = () => {
           setCoordinates(locationCoordinates);
         }
       } catch (error) {
-        console.error('Error getting coordinates:', error);
+        throw new Error("Couldn't get coordinates");
       }
     };
     handleFetchCoordinates();
